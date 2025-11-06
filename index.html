@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cayo Perico Calculator</title>
+</head>
+<script>
+  const capacityPerPerson = 100;
+
+  function calculatePeopleNeeded() {
+    let gold = Number(document.getElementById('gold').value) || 0;
+    let painting = Number(document.getElementById('painting').value) || 0;
+    let cash = Number(document.getElementById('cash').value) || 0;
+    let cocaine = Number(document.getElementById('cocaine').value) || 0;
+    let weed = Number(document.getElementById('weed').value) || 0;
+
+    if (gold < 0) gold = 0;
+    if (painting < 0) painting = 0;
+    if (cash < 0) cash = 0;
+    if (cocaine < 0) cocaine = 0;
+    if (weed < 0) weed = 0;
+
+    let goldWeight = 66 * gold;
+    let paintingWeight = 50 * painting;
+    let cashWeight = 25 * cash;
+    let cocaineWeight = 50 * cocaine;
+    let weedWeight = 33 * weed;
+
+    let totalWeight = goldWeight + paintingWeight + cashWeight + cocaineWeight + weedWeight;
+
+    let peopleNeeded = Math.ceil(totalWeight / capacityPerPerson);
+    document.getElementById('peopleNeededForEverything').innerHTML = peopleNeeded;
+    document.getElementById('peopleNeededForEliteChallenge').innerHTML = peopleNeeded > 0 ? (peopleNeeded - 1) : 0;
+  }
+</script>
+
+
+
+<style>
+
+    body {
+    background-color: #0f0f0f;
+    color: #f0f0f0;
+    font-family: "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  form {
+    background-image: url("CayoPerico.webp");
+    background-size: cover;          /* fills the island fully */
+    background-position: center;     /* centers the image */
+    background-repeat: no-repeat;    /* no tiling */
+    background-color: #4eb3d1;       /* fallback color if image fails to load */
+
+    background-color: #4eb3d1;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    width: 37.5rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+    color: #ffd700;
+  }
+
+  label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 2rem;
+    color: #2a2a2a;
+  }
+
+  input[type="number"] {
+    width: 3rem;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.4rem;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #fff;
+    height: 2.5rem;       /* increase height */
+    font-size: 2rem;  /* bigger text */
+  }
+
+  span {
+    color: #00e676;
+    border-radius: 0.4rem;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+    width: 3rem;
+  }
+
+  #peopleNeededForEliteChallenge {
+    color: #ffd700;
+  }
+
+</style>
+<body>
+    <form>
+        <h1>Calculate how many people you need for the heist.</h1>
+        <label>Gold: <input type="number" id="gold" onchange="calculatePeopleNeeded()" value="0" min="0""></label>
+        <label>Painting: <input type="number" id="painting" onchange="calculatePeopleNeeded()" value="0" min="0"></label>
+        <label>Cash: <input type="number" id="cash" onchange="calculatePeopleNeeded()" value="0" min="0"></label>
+        <label>Cocaine: <input type="number" id="cocaine" onchange="calculatePeopleNeeded()" value="0" min="0"></label>
+        <label>Weed: <input type="number" id="weed" onchange="calculatePeopleNeeded()" value="0" min="0"></label>
+        <label>Elite Challenge: <span id="peopleNeededForEliteChallenge">0</span></label>
+        <label>People Needed for everything: <span id="peopleNeededForEverything">0</span></label>
+    </form>
+</body>
+</html>
