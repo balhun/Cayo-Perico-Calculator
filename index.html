@@ -29,9 +29,9 @@
 
     let totalWeight = goldWeight + paintingWeight + cashWeight + cocaineWeight + weedWeight;
 
-    let peopleNeeded = Math.ceil(totalWeight / capacityPerPerson);
-    document.getElementById('peopleNeededForEverything').innerHTML = peopleNeeded;
-    document.getElementById('peopleNeededForEliteChallenge').innerHTML = peopleNeeded > 0 ? (peopleNeeded - 1) : 0;
+    let peopleNeeded = totalWeight / capacityPerPerson;
+    document.getElementById('peopleNeededForEverything').innerHTML = Math.ceil(peopleNeeded);
+    document.getElementById('peopleNeededForEliteChallenge').innerHTML = Math.floor(peopleNeeded);
   }
 </script>
 
@@ -53,10 +53,9 @@
 
   form {
     background-image: url("CayoPerico.webp");
-    background-size: cover;          /* fills the island fully */
-    background-position: center;     /* centers the image */
-    background-repeat: no-repeat;    /* no tiling */
-    background-color: #4eb3d1;       /* fallback color if image fails to load */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     background-color: #4eb3d1;
     padding: 2rem 3rem;
@@ -89,8 +88,8 @@
     border: 1px solid #444;
     background-color: #2a2a2a;
     color: #fff;
-    height: 2.5rem;       /* increase height */
-    font-size: 2rem;  /* bigger text */
+    height: 2.5rem;
+    font-size: 2rem;
   }
 
   span {
